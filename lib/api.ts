@@ -1,6 +1,7 @@
 export const API_URL = "https://api.digitalcollege.edu.pe/api";
 
 export async function login() {
+
   const response = await fetch(`${API_URL}/auth/login-app`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -15,13 +16,21 @@ export async function login() {
 
   const data = await response.json();
   return data.token; 
-}
+} 
 
-export async function getCoursesByUserId(token: string) {
-  const response = await fetch(`${API_URL}/versioncurso-usuarios/getByUserId`, {
-    headers: { Authorization: `Bearer ${token}` },
-  });
+export async function getCursos(token: string) {
+  const response = await fetch(
+    'https://api.digitalcollege.edu.pe/api/versioncurso-usuarios/getByUserId',
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }
+  );
 
-  if (!response.ok) throw new Error("Error al obtener los cursos");
+  if (!response.ok) {
+    throw new Error('Error al obtener cursos');
+  }
+
   return response.json();
 }
