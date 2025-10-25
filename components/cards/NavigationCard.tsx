@@ -14,7 +14,6 @@ interface NavigationCardProps {
 const NavigationCard = ({ label, subtitle, color }: NavigationCardProps) => {
   return (
     <div className="relative w-56 h-32 rounded-xl overflow-hidden shadow-lg">
-      {/* SVG de fondo */}
       <Image
         src="/icons/card/card.svg"
         alt="Card Background"
@@ -22,7 +21,6 @@ const NavigationCard = ({ label, subtitle, color }: NavigationCardProps) => {
         className="object-cover"
       />
 
-      {/* Contenido del card */}
       <div className="absolute inset-0 flex flex-col justify-center items-center text-center p-4 z-10">
         <h3 className={`text-lg font-bold bg-gradient-to-r ${color} bg-clip-text text-transparent`}>
           {label}
