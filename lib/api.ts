@@ -1,36 +1,42 @@
+// lib/api.ts
 export const API_URL = "https://api.digitalcollege.edu.pe/api";
 
-export async function login() {
-
+// Función de login que recibe email y contraseña
+export async function login(email: string, password: string) {
   const response = await fetch(`${API_URL}/auth/login-app`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
-      email: "miguel@gmail.com",
-      password: "71755767",
-      rememberMe: false
+      email,
+      password,
+      rememberMe: false,
     }),
   });
 
-  if (!response.ok) throw new Error("Error al autenticar usuario");
-
-  const data = await response.json();
-  return data.token; 
-} 
-
-export async function getCursos(token: string) {
-  const response = await fetch(
-    'https://api.digitalcollege.edu.pe/api/versioncurso-usuarios/getByUserId',
-    {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    }
-  );
-
   if (!response.ok) {
-    throw new Error('Error al obtener cursos');
+    const errorData = await response.json().catch(() => ({}));
+    throw new Error(errorData.mensaje || "Error al autenticar usuario");
   }
 
-  return response.json();
+  const data = await response.json();
+  return data; // Devuelve token, nombres, apellidos, id, correo, etc.
+}
+
+// Función para obtener cursos del usuario usando el token
+export async function getCursos(token: string) {
+  const response = await fetch(`${API_URL}/versioncurso-usuarios/getByUserId`, {
+    method: "GET",
+    headers: {
+      Authorization: `Bearer ${token}`,
+      "Content-Type": "application/json",
+    },
+  });
+
+  if (!response.ok) {
+    const errorData = await response.json().catch(() => ({}));
+    throw new Error(errorData.mensaje || "Error al obtener cursos");
+  }
+
+  const data = await response.json();
+  return data.data || data; // Ajusta según lo que devuelva la API
 }

@@ -1,30 +1,15 @@
 'use client';
-import { useState } from 'react';
-import { getCursos } from '@/lib/api';
-import LoginForm from '@/components/LoginForm';
-import CursosList from '@/components/CursosList';
+import { useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 
-export default function HomePage() {
-  const [token, setToken] = useState('');
-  const [cursos, setCursos] = useState<any[]>([]);
+export default function Home() {
+  const router = useRouter();
 
-  const handleLoginSuccess = async (token: string) => {
-    setToken(token);
-    const data = await getCursos(token);
-    setCursos(data);
-  };
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    if (token) router.replace('/dashboard');
+    else router.replace('/login');
+  }, [router]);
 
-  return (
-    <div className="p-6 max-w-md mx-auto">
-      <h1 className="text-3xl font-bold mb-6 text-center text-blue-700">
-        Portal Digital College
-      </h1>
-
-      {!token ? (
-        <LoginForm onLoginSuccess={handleLoginSuccess} />
-      ) : (
-        <CursosList cursos={cursos} />
-      )}
-    </div>
-  );
+  return null; // nada se renderiza, solo redirige
 }
