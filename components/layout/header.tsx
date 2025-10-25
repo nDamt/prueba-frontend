@@ -28,8 +28,7 @@ export const Header = ({
         className="absolute inset-0 w-full h-full object-cover"
       />
 
- 
-      <div className="relative z-10 p-6 flex items-center space-x-6">
+      <div className="relative z-10 p-6 flex items-center space-x-6 pl-20">
         <div className="w-16 h-16 md:w-20 md:h-20 rounded-full border-2 border-cyan-400 flex items-center justify-center overflow-hidden">
           <img
             src="/icons/imagen_perfil.jpg"

@@ -36,7 +36,7 @@ export const CursoCard = ({ cursos }: CursoCardProps) => {
               className="object-contain"
             />
 
-            <div className="absolute inset-0 flex flex-col justify-end items-center text-center p-4 z-10">
+            <div className="absolute inset-0 flex flex-col justify-end items-center text-center p-18 z-10">
               <h3 className="text-lg font-bold text-white">{nombre}</h3>
               <span className="mt-2 text-sm font-medium bg-orange-500/80 px-3 py-1 rounded-full cursor-pointer hover:bg-orange-600 transition-all">
                 Adquirir curso
