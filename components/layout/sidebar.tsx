@@ -1,11 +1,12 @@
 'use client';
 
 import React from 'react';
+import { useRouter } from 'next/navigation';
 import {
   HomeIcon,
   RocketLaunchIcon,
   Cog6ToothIcon,
- 
+  ArrowRightOnRectangleIcon,
   UsersIcon,
   ChartBarIcon,
   TrophyIcon
@@ -21,14 +22,17 @@ const menuItems = [
 ];
 
 export const Sidebar = () => {
+    const router = useRouter();
+
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    router.replace('/login');
+  };
   return (
     <div className="w-20 bg-gray-900 border-r border-gray-700 flex flex-col items-center py-6 space-y-6">
-      {/* Logo */}
       <div className="w-14 h-14 rounded-full bg-gradient-to-br from-orange-500 to-amber-600 flex items-center justify-center border-2 border-orange-400">
         <span className="text-white font-bold text-lg">DC</span>
       </div>
-
-      {/* Menú */}
       <div className="flex-1 flex flex-col items-center space-y-4 mt-6">
         {menuItems.map((item, idx) => {
           const Icon = item.icon;
@@ -43,11 +47,14 @@ export const Sidebar = () => {
           );
         })}
       </div>
+      <button
+        onClick={handleLogout}
+        className="w-12 h-12 rounded-lg bg-red-600 border border-red-700 hover:bg-red-500/80 transition-all flex items-center justify-center"
+        title="Cerrar sesión"
+      >
+        <ArrowRightOnRectangleIcon className="w-6 h-6 text-white" />
+      </button>
 
-      {/* Perfil */}
-      <div className="w-12 h-12 rounded-full bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center border-2 border-cyan-400">
-        <span className="text-white font-bold">DM</span>
-      </div>
     </div>
   );
 };
