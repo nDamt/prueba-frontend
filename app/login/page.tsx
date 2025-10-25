@@ -11,7 +11,6 @@ export default function LoginPage() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
-  // Si ya hay token, redirige al dashboard
   useEffect(() => {
     const token = localStorage.getItem('token');
     if (token) router.push('/dashboard');

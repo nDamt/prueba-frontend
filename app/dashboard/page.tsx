@@ -1,4 +1,3 @@
-// app/Dashboard.tsx
 'use client';
 
 import React, { useEffect, useState } from 'react';
@@ -10,11 +9,18 @@ import {
   Cog6ToothIcon,
   UsersIcon,
   ChartBarIcon,
-  TrophyIcon
+  TrophyIcon,
+  ArrowLeftOnRectangleIcon, // icono de logout
 } from '@heroicons/react/24/outline';
 
-// ===== SIDEBAR COMPONENT =====
 const Sidebar = () => {
+  const router = useRouter();
+
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    router.replace('/login');
+  };
+
   const menuItems = [
     { label: 'Inicio', icon: HomeIcon },
     { label: 'Misiones', icon: RocketLaunchIcon },
@@ -51,11 +57,19 @@ const Sidebar = () => {
       <div className="w-12 h-12 rounded-full bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center border-2 border-cyan-400">
         <span className="text-white font-bold">DM</span>
       </div>
+
+      {/* Botón de Cerrar Sesión */}
+      <button
+        onClick={handleLogout}
+        className="w-12 h-12 mt-4 rounded-lg bg-red-600 hover:bg-red-500 transition-all flex items-center justify-center"
+        title="Cerrar sesión"
+      >
+        <ArrowLeftOnRectangleIcon className="w-6 h-6 text-white" />
+      </button>
     </div>
   );
 };
 
-// ===== DASHBOARD PAGE =====
 export default function Dashboard() {
   const router = useRouter();
   const [cursos, setCursos] = useState<any[]>([]);

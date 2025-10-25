@@ -1,7 +1,5 @@
-// lib/api.ts
 export const API_URL = "https://api.digitalcollege.edu.pe/api";
 
-// Función de login que recibe email y contraseña
 export async function login(email: string, password: string) {
   const response = await fetch(`${API_URL}/auth/login-app`, {
     method: "POST",
@@ -19,10 +17,9 @@ export async function login(email: string, password: string) {
   }
 
   const data = await response.json();
-  return data; // Devuelve token, nombres, apellidos, id, correo, etc.
+  return data; 
 }
 
-// Función para obtener cursos del usuario usando el token
 export async function getCursos(token: string) {
   const response = await fetch(`${API_URL}/versioncurso-usuarios/getByUserId`, {
     method: "GET",
@@ -38,5 +35,5 @@ export async function getCursos(token: string) {
   }
 
   const data = await response.json();
-  return data.data || data; // Ajusta según lo que devuelva la API
+  return data.data || data; 
 }
