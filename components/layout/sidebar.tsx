@@ -34,7 +34,7 @@ export const Sidebar = ({ userName = "David Moloche" }: SidebarProps) => {
   };
 
   return (
-    <div className="w-32 bg-gray-900 border-r border-gray-700 flex flex-col items-center py-6 space-y-6">
+    <div className="w-32 bg-black border-r border-gray-800 flex flex-col items-center py-6 space-y-6">
       <div className="flex flex-col items-center">
         <div className="w-20 h-20 rounded-full overflow-hidden border-2 border-orange-400 flex items-center justify-center">
           <Image
@@ -58,7 +58,7 @@ export const Sidebar = ({ userName = "David Moloche" }: SidebarProps) => {
           return (
             <button
               key={idx}
-              className="w-14 h-14 rounded-lg bg-gray-800 border border-gray-700 hover:bg-orange-500/20 transition-all flex items-center justify-center"
+              className="w-14 h-14 rounded-lg bg-black border border-gray-800 hover:bg-orange-500/20 transition-all flex items-center justify-center"
               title={item.label}
             >
               <Icon className="w-7 h-7 text-white" />

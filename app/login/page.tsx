@@ -33,8 +33,8 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-900">
-      <div className="w-full max-w-sm p-8 bg-gray-800 rounded-xl shadow-lg">
+    <div className="min-h-screen flex items-center justify-center bg-black">
+      <div className="w-full max-w-sm p-8 bg-gray-900 rounded-xl shadow-lg">
         <h1 className="text-2xl font-bold text-white text-center mb-6">Iniciar Sesión</h1>
         {error && <p className="text-red-500 text-sm mb-4 text-center">{error}</p>}
         <form onSubmit={handleLogin} className="flex flex-col space-y-4">
@@ -44,7 +44,7 @@ export default function LoginPage() {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
-            className="p-3 rounded-lg bg-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-500"
+            className="p-3 rounded-lg bg-gray-800 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-500"
           />
           <input
             type="password"
@@ -52,7 +52,7 @@ export default function LoginPage() {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
-            className="p-3 rounded-lg bg-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-500"
+            className="p-3 rounded-lg bg-gray-800 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-500"
           />
           <button
             type="submit"
