@@ -4,6 +4,7 @@ import { useRouter } from 'next/navigation';
 import { getCursos } from '@/lib/api';
 import { Sidebar } from '@/components/layout/sidebar';
 import { Header } from '@/components/layout/header';
+import { NavigationCards } from '@/components/cards/NavigationCard';
 
 export default function Dashboard() {
   const router = useRouter();
@@ -27,7 +28,7 @@ export default function Dashboard() {
       <Sidebar />
       <div className="flex-1 ml-20">
         <Header userName="DAVID MOLOCHE" userLevel={5} academyId="ID-00000000" />
-
+        <NavigationCards />
         <div className="p-6">
           <h1 className="text-3xl font-bold mb-6">Dashboard</h1>
 
