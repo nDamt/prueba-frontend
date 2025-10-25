@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Education Platform",
+  title: "Digital College",
   description: "A platform for educational resources and tools",
 };
 
